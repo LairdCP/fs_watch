@@ -1,0 +1,14 @@
+fs_watch
+
+This program is a basic filesystem watcher using inotify. It's based on the example
+program in inotify-tools and thus is governed by the GPL v2.
+
+It is hard-coded to watch the entire filesystem starting with / and can be passed exclude
+directories in the form of "@/directory". It outputs on stdout and is best combined
+with logger to write to the syslog.
+
+A typical command-line, suitable for including in an init.d script:
+    /usr/bin/fs_watch @/dev @/tmp @/sys @/proc | logger -t fs_watch &
+
+Any parts that aren't covered by inotify-tools are
+Copyright 2014 Laird
